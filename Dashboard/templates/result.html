@@ -1,0 +1,60 @@
+{% extends 'admin_index.html' %}
+{% block title %}
+<div class="row column_title">
+    <div class="col-md-12">
+       <div class="page_title">
+          <h2>Election Results</h2>
+       </div>
+    </div>
+ </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+      
+       <div class="table_section padding_infor_info">
+          <div class="table-responsive-sm">
+             <table class="table">
+                <thead>
+                   <tr>
+                      <th>#</th>
+                      <th>Candidate name</th>
+                      <th>Party name</th>
+                      <th>Party logo</th> 
+                      <th>Vote</th>
+                   </tr>
+                </thead>
+                <tbody>
+                {% for i in data %}
+                   <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.candidate_name}}</td>
+                      <td>{{i.party_name}}</td>
+                      <td><img src="{{i.party_logo.url}}" style="width: 40px; height: 40px;" alt=""></td>
+                      <td>{{i.vote_count}}</td>
+                     </tr>
+                {% endfor %}
+                </tbody>
+             </table>
+          </div>
+       </div>
+    </div>
+
+    <div class="container">
+      {% for i in winner %}
+      <h2>Election Result</h2>
+      <div class="pt-4">
+      <img class="img-responsive" src="{{ MEDIA_URL }}{{ i.candidate_photo.url }}" style="width: 60px; height: 60px; border-radius: 50%;" alt="">
+      <h1>{{i.candidate_name}}</h1>
+      </div>
+      <p>Total Votes : {{i.vote_count}}</p>
+      {% endfor %}
+    </div>
+ </div>
+</div>
+</div>
+
+
+{% endblock %}

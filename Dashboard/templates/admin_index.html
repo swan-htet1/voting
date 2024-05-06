@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Pluto - Responsive Bootstrap Admin Panel Templates</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="{% static 'vote/images/fevicon.png' %}" type="image/png" />
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'vote/css/bootstrap.min.css' %}" />
+      <!-- site css -->
+      <link rel="stylesheet" href="{% static 'vote/style.css' %}" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="{% static 'vote/css/responsive.css' %}" />
+      <!-- color css -->
+      <link rel="stylesheet" href="{% static 'vote/css/colors.css' %}" />
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="{% static 'vote/css/bootstrap-select.css' %}" />
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="{% static 'vote/css/perfect-scrollbar.css' %}" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="{% static 'vote/css/custom.css' %}" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body class="dashboard dashboard_1">
+      <div class="full_container">
+         <div class="inner_container">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+               <div class="sidebar_blog_1">
+                  <div class="sidebar-header">
+                     <div class="logo_section">
+                        <a href="{% url 'admin_index' %}"><img class="logo_icon img-responsive" style="width: 100px; height:60px;" src="{% static 'vote/images/logo/logo_icon.jpg' %}" alt="#" /></a>
+                     </div>
+                  </div>
+                  <div class="sidebar_user_info">
+                     <div class="icon_setting"></div>
+                     {% if "username_a" in request.session %}
+                     <div class="user_profle_side">
+                        <div class="user_img"><img class="img-responsive" src="{% static 'vote/images/layout_img/user_img.jpg' %}" style="width: 75px; height: 75px;" alt="#" /></div>
+                        <div class="user_info">
+                           <h6>{{request.session.username_a}}</h6>
+                           <p><span class="online_animation"></span> Online</p>
+                        </div>
+                     </div>
+                     {% else %}
+                     <div class="user_profle_side">
+                        <div class="user_info">
+                           
+                           <p style="color:white; "><i class="fa fa-circle" aria-hidden="true"></i> Offline</p>
+                        </div>
+                     </div>
+                     {% endif %}
+                  </div>
+               </div>
+               <div class="sidebar_blog_2">
+                  <h4>Welcome To DigiVote</h4>
+                  <ul class="list-unstyled components">
+                     <li class="active">
+                        <a href="{% url 'admin_index' %}"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
+                     </li>
+                    
+                     <li><a href="{% url 'candidate_register' %}"><i class="fa fa-user-plus blue1_color"></i> <span>Candidate Registration</span></a></li>
+                    
+                     <li><a href="{% url 'available_candidates' %}"><i class="fa fa-list purple_color2"></i> <span>Available candidates</span></a></li>
+
+                     <li><a href="{% url 'user_register' %}"><i class="fa fa-user-plus blue1_color"></i> <span>Voters</span></a></li>
+
+                     <li><a href="{% url 'result' %}"><i class="fa fa-bar-chart-o green_color"></i> <span>Result</span></a></li>
+                    
+                  </ul>
+               </div>
+            </nav>
+            <!-- end sidebar -->
+            <!-- right content -->
+            <div id="content">
+               <!-- topbar -->
+               <div class="topbar">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <div class="full">
+                        <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
+                        
+                        <div class="right_topbar">
+                           <div class="icon_info">
+                              <ul class="user_profile_dd">
+                                 <li>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{% static 'vote/images/layout_img/user_img.jpg' %}" alt="#" /><span class="name_user">{{request.session.username_a}}</span></a>
+                                    <div class="dropdown-menu">
+                                       <a class="dropdown-item" href="{% url 'admin_logout' %}"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+               <!-- end topbar -->
+               <!-- dashboard inner -->
+               <div class="midde_cont">
+                  <div class="container-fluid">
+                     {% block title %}
+                     <div class="row column_title">
+                        <div class="col-md-12">
+                           <div class="page_title">
+                              <h2>Dashboard</h2>
+                           </div>
+                        </div>
+                     </div>
+                     {% endblock %}
+                     {% block content %}
+                     <div class="row column1">
+                        <div class="col-md-6 col-lg-3">
+                           <div class="full counter_section margin_bottom_30">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-user yellow_color"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">{{count_voter}}</p>
+                                    <p class="head_couter">Voters</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="full counter_section margin_bottom_30">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-user blue1_color"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">{{count_candidate}}</p>
+                                    <p class="head_couter">Candidates</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                       
+                     </div>
+                     {% endblock %}
+                     
+                  </div>
+                  <!-- footer -->
+                 
+               </div>
+               <!-- end dashboard inner -->
+            </div>
+         </div>
+      </div>
+      <!-- jQuery -->
+      <script src="{% static 'vote/js/jquery.min.js' %}"></script>
+      <script src="{% static 'vote/js/popper.min.js' %}"></script>
+      <script src="{% static 'vote/js/bootstrap.min.js' %}"></script>
+      <!-- wow animation -->
+      <script src="{% static 'vote/js/animate.js' %}"></script>
+      <!-- select country -->
+      <script src="{% static 'vote/js/bootstrap-select.js' %}"></script>
+      <!-- owl carousel -->
+      <script src="{% static 'vote/js/owl.carousel.js' %}"></script> 
+      <!-- chart js -->
+      <script src="{% static 'vote/js/Chart.min.js' %}"></script>
+      <script src="{% static 'vote/js/Chart.bundle.min.js' %}"></script>
+      <script src="{% static 'vote/js/utils.js' %}"></script>
+      <script src="{% static 'vote/js/analyser.js' %}"></script>
+      <!-- nice scrollbar -->
+      <script src="{% static 'vote/js/perfect-scrollbar.min.js' %}"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- custom js -->
+      <script src="{% static 'vote/js/custom.js' %}"></script>
+      <script src="{% static 'vote/js/chart_custom_style1.js' %}"></script>
+   </body>
+</html>
