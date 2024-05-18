@@ -25,7 +25,7 @@ SECRET_KEY = '^tm3@f!kx)$ytm^urm7%jfv&!tbg$*n8i81dz5wte7i(uo*%@)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://voting-zra2.onrender.com']
+ALLOWED_HOSTS = ['localhost','voting-zra2.onrender.com']
 
 
 # Application definition
